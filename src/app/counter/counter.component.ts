@@ -1,4 +1,4 @@
-import { Component, inject, NgZone, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 
 import { InfoMessageComponent } from '../info-message/info-message.component';
 
@@ -10,14 +10,10 @@ import { InfoMessageComponent } from '../info-message/info-message.component';
   imports: [InfoMessageComponent],
 })
 export class CounterComponent implements OnInit {
-  private zone = inject(NgZone);
-
   ngOnInit(): void {
-    this.zone.runOutsideAngular(() => {
       setTimeout(()=>{
         console.log('Timer expired');
-      }, 4000)
-    })
+      }, 4000);
   }
 
   count = signal(0);
